@@ -4,3 +4,80 @@ $size: 533px;
 h1 {
   color: $main-color;
 }
+
+body {
+  width: 100%;
+  margin: 0px;
+  background-color: azure;
+}
+
+#main {
+  margin: auto;
+  width: 1152px;
+}
+
+#page-one {
+  width: 100px;
+  height: 100px;
+  background-color: antiquewhite;
+}
+
+#page-two {
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+}
+
+#page-three {
+  //width: 100px;
+  //height: 100px;
+  //background-color: lightblue;
+}
+
+.header {
+  width: 1152px;
+  height: 72px;
+  background-color: #F9BBDE;
+  //opacity: 26%;
+}
+
+img {
+  width: 53px;
+  height: 52px;
+
+  padding-top: 10px;
+  padding-left: 19px;
+}
+
+.forms {
+  width: 741px;
+  height: 628px;
+  background-color: #FFF4F4;
+}
+
+.form-log-passw {
+  display: flex;
+  flex-direction: column;
+  width: 399px;
+  height: 370px;
+  //background-color: #F9BBDE;
+}
+
+.login{
+  width: 393px;
+  height: 52px;
+
+  background: #FFFDFD;
+  border: 1px solid #F1CDCD;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+
+.password{
+  width: 393px;
+  height: 52px;
+  background: #FFFDFD;
+  border: 1px solid #F1CDCD;
+  box-sizing: border-box;
+  border-radius: 12px;
+}

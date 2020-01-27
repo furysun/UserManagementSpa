@@ -20,5 +20,8 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "html-to-image": "^0.1.1",
+    "jquery": "^3.4.1"
+  }
 }

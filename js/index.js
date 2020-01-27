@@ -1,2 +1,6 @@
 import '../css/index.scss';
-alert('<3');
+import {main} from "./app";
+import $ from 'jquery';
+
+// var $ = require("jquery");
+main();
