@@ -1,0 +1,207 @@
+$main-color: red;
+$size: 533px;
+
+h1 {
+  color: $main-color;
+}
+p{
+  margin: 10px;
+  margin-left: 10px;
+
+}
+::placeholder{
+  font-family: Roboto;
+  color: #CB82C4;
+}
+body {
+  width: 100%;
+  margin: 0px;
+  background-color: azure;
+  font-family: Roboto;
+  color: #CB82C4;
+}
+
+//table, th, td {
+//  //border-collapse: collapse;
+//  padding-left: 10px;
+//  border: 1px solid black;
+//  text-align: left;
+//
+//}
+table {
+  border-collapse: collapse;
+  border: 2px solid #CB82C4;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 2px solid #CB82C4;
+}
+.butt-table{
+  //border-bottom: none;
+}
+
+.butt-ok-table{
+  width: 30px;
+  height: 30px;
+  border: 2px solid #CB82C4;
+}
+#main {
+  margin: auto;
+  width: 1152px;
+}
+
+#page-one {
+  width: 100px;
+  height: 100px;
+}
+
+#page-two {
+  width: 100px;
+  height: 100px;
+}
+
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 1152px;
+  height: 72px;
+  background-color: #F9BBDE;
+  //opacity: 26%;
+}
+
+img {
+  width: 53px;
+  height: 52px;
+
+  padding-top: 10px;
+  padding-left: 19px;
+}
+
+.forms {
+  width: 741px;
+  height: 628px;
+  margin-left: 222px;
+  background-color: #FFF4F4;
+}
+
+//.form-log-passw {
+//  display: flex;
+//  flex-direction: column;
+//}
+.lll{
+  margin-left: 171px;
+}
+.login{
+  width: 393px;
+  height: 42px;
+  background: #FFFDFD;
+  border: 1px solid #F1CDCD;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+
+.pass{
+  margin-left: 171px;
+}
+.password{
+  width: 393px;
+  height: 42px;
+  background: #FFFDFD;
+  border: 1px solid #F1CDCD;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+
+.button-ok{
+  position: absolute;
+  width: 393px;
+  height: 42px;
+  border: none;
+  font-family: Roboto;
+  color: #CB82C4;
+  background: #FBD6E3;
+  border-radius: 12px;
+}
+.ok-butt{
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-left: 171px;
+}
+
+.button-registr{
+  position: absolute;
+  width: 393px;
+  height: 42px;
+  border: none;
+  font-family: Roboto, serif;
+  color: #CB82C4;
+  margin-left: 171px;
+  background: #FBD6E3;
+  border-radius: 12px;
+}
+
+.reg-butt{
+  margin-top: 110px;}
+
+.log-form{
+  margin-top: 155px;
+}
+
+.log-out{
+  margin-left: 743px;
+  margin-top: 10px;
+  width: 167px;
+  height: 52px;
+  border:  none;
+  font-family: Roboto;
+  color: #CB82C4;
+  background: #FBD6E3;
+  border-radius: 12px;
+}
+
+.profile{
+  width: 385px;
+  height: 307px;
+  margin-left: 188px;
+
+  padding-top:202px;
+}
+.line{
+  width: 374px;
+  height: 30px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid #F1CDCD;
+  padding-left: 10px;
+}
+
+.prof-button{
+  width: 183px;
+  height: 52px;
+  margin-top: 24px;
+  background: #FBD6E3;
+  border-radius: 12px;
+  font-family: Roboto;
+  color: #CB82C4;
+  border: none;
+}
+.ok-left{
+  margin-left: 15px;
+}
+.hi{
+  margin-left: 34px;
+  margin-top: 23px;
+  width: 125px;
+  height: 29px;
+}
+.table{
+  width: 694px;
+  height: 240px;
+  margin-top: 88px;
+  margin-left: 188px;
+}
+
