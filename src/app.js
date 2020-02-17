@@ -1,45 +1,24 @@
 import $ from 'jquery';
 import {LoginComponent} from "./pages/login/login.component";
+import {Router} from "./router";
 
 export function main() {
     $(() => {
         LoginComponent.render();
     });
 
-    window.goToLogin = goToLogin;
-    window.goToRegistration = goToRegistration;
-    window.goToAdminDashboard = goToAdminDashboard;
-    window.onpopstate = onBrowserBack;
+    configRouter();
 }
 
-function onBrowserBack(event) {
-    const state = event.state;
-    console.log(event.state);
-    if (state === 'page1') {
-        LoginComponent.render();
-    } else if (state === 'page2') {
-        displayRegistration();
-    } else if (state === 'page3') {
-        displayAdminDashboard();
-    }
+function configRouter() {
+    window.goToLogin = Router.goToLogin;
+    window.goToRegistration = Router.goToRegistration;
+    window.goToAdminDashboard = Router.goToAdminDashboard;
+
+    window.onpopstate = Router.onBrowserBack;
 }
 
-function goToLogin() {
-    history.pushState('page1', 'page1');
-    LoginComponent.render();
-}
-
-function goToRegistration() {
-    history.pushState('page2', 'page2');
-    displayRegistration();
-}
-
-function goToAdminDashboard() {
-    history.pushState('page3', 'page3');
-    displayAdminDashboard();
-}
-
-function displayAdminDashboard() {
+export function displayAdminDashboard() {
     const content = `<div id="page-three">
         <div class="header">
             <div>
@@ -120,7 +99,7 @@ function displayAdminDashboard() {
     $('#router-outlet').html(content);
 }
 
-function displayRegistration() {
+export function displayRegistration() {
     const content = `<div id="page-two">
         <div class="header">
         <div>
@@ -154,31 +133,3 @@ function displayRegistration() {
 
     $('#router-outlet').html(content);
 }
-
-// function displayLoginPage() {
-
-//     const content = `<div id="page-one">
-// <div class="header">
-//     <img src="./assets/img/diamond.svg">
-// </div>
-//
-// <div class="forms">
-//     <div class="form-log-passw">
-//     <div class="log-form">
-//         <div class="lll"><p>login</p>
-//             <input class="login" type="text"></div>
-//         <div class="pass"><p>password</p>
-//             <input class="password" type="password">
-//         </div>
-//         <div class="ok-butt">
-//             <button onclick="goToAdminDashboard()" class="button-ok">Ok</button>
-//         </div>
-//
-//         <div onclick="goToRegistration()"class="reg-butt"><button class="button-registr">Registration</button></div>
-//         </div>
-//     </div>
-//
-// </div>
-//     </div>`;
-//     $('#router-outlet').html(content);
-// }
