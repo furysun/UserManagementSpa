@@ -1,5 +1,7 @@
 import {LoginComponent} from "./pages/login/login.component";
 import {displayAdminDashboard, displayRegistration} from "./app";
+import {RegistrationComponent} from "./pages/registration/registration.component";
+import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 
 export class Router {
     static onBrowserBack(event) {
@@ -21,11 +23,11 @@ export class Router {
 
     static goToRegistration() {
         history.pushState('page2', 'page2');
-        displayRegistration();
+        RegistrationComponent.render();
     }
 
     static goToAdminDashboard() {
         history.pushState('page3', 'page3');
-        displayAdminDashboard();
+        DashboardComponent.render();
     }
 }

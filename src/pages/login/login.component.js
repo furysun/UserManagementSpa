@@ -1,10 +1,12 @@
 import $ from "jquery";
 import './login.component.scss';
+import {state} from "../../core/state";
 
 const template = `
     <div id="page-one">
         <div class="header">
             <img src="./assets/img/diamond.svg">
+            <p>${state.name}</p>
         </div>
     
         <div class="forms">

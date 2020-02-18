@@ -1,0 +1,19 @@
+table {
+    border-collapse: collapse;
+    border: 2px solid #CB82C4;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 2px solid #CB82C4;
+}
+.butt-table{
+//border-bottom: none;
+}
+
+.butt-ok-table{
+    width: 30px;
+    height: 30px;
+    border: 2px solid #CB82C4;
+}
