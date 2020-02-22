@@ -26,6 +26,7 @@ const template = `<div id="page-three">
     <th>Type</th>
     <th>Login</th>
     <th>Actions</th>
+    <th></th>
   </tr>
   <tr>
     <td>1</td>
@@ -77,6 +78,7 @@ const template = `<div id="page-three">
   </tr>
 </table>
 </div>
+
 
     </div>`;
 
