@@ -1,9 +1,27 @@
 import $ from "jquery";
 // import './dashboard.component.scss';
 import './dashboard.component.scss';
+import {state} from "../../core/state";
 
+// const a = [1, 2, 3, 4,7];
+//
+// let template2 = `<table style="width:100%">`;
+//
+// a.forEach((el)=>{
+//     template2 += `
+//     <tr>
+//         <td>${el}</td>
+//         <td>${el}</td>
+//         <td>${el}</td>
+//         <td>${el}</td>
+//         <td>${el}</td>
+//         <td>${el}</td>
+//     </tr>`;
+// });
+//
+// template2 += `</table>`;
 
-const template = `<div id="page-three">
+let template = `<div id="page-three">
         <div class="header">
             <div>
                 <img src="./assets/img/diamond.svg">
@@ -16,70 +34,32 @@ const template = `<div id="page-three">
             <button onclick="goToLogin()" class="log-out">Log out</button></div>
         </div>
 
-        <div class="table">
-
+<div class="table">
 <table style="width:100%">
   <tr>
     <th>Id</th>
     <th>Name</th>
     <th>Age</th>
-    <th>Type</th>
     <th>Login</th>
     <th>Actions</th>
     <th></th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Tom</td>
-    <td>50</td>
-    <td>admin</td>
-    <td>12345679</td>
-    <td class="butt-table"><buttt class= "butt-ok-table">ok</buttt></td>
-    <td class="butt-table"><buttt class="butt-ok-table">ok</buttt></td>
-  </tr>
+  </tr>`;
 
+state.users.forEach((user)=>{
+    template += `
   <tr>
-    <td>2</td>
-    <td>Smith</td>
-    <td>27</td>
-    <td>user</td>
-    <td>5679</td>
-    <td class="butt-table"><buttt class="butt-ok-table">ok</buttt></td>
-    <td class="butt-table"><buttt class="butt-ok-table">ok</buttt></td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Smith</td>
-    <td>40</td>
-    <td>admin</td>
-    <td>12345679</td>
-    <td class="butt-table"><buttt class="butt-ok-table">ok</buttt></td>
-    <td class="butt-table"><buttt class="butt-ok-table">ok</buttt></td>
-  </tr>
+    <td>${user.id}</td>
+    <td>${user.name}</td>
+    <td>${user.age}</td>
+    <td>${user.login}</td>
+    <td class="butt-table"><buttt class= "butt-ok-table">Edit</buttt></td>
+    <td class="butt-table"><buttt class="butt-ok-table">Delete</buttt></td>
+  </tr>`;
+});
 
-  <tr>
-    <td>4</td>
-    <td>Smith</td>
-        <td>20</td>
-    <td>user</td>
-    <td>12345679</td>
-    <td class="butt-table"><buttt class="butt-ok-table">ok</buttt></td>
-    <td class="butt-table"><buttt class="butt-ok-table">ok</buttt></td>
-  </tr>
-
-  <tr>
-    <td>5</td>
-    <td>Nicki</td>
-    <td>36</td>
-    <td>admin</td>
-    <td>12345679</td>
-    <td class="butt-table"><buttt class="butt-ok-table">ok</buttt></td>
-    <td class="butt-table"><buttt class="butt-ok-table">ok</buttt></td>
-  </tr>
+template += ` 
 </table>
 </div>
-
-
     </div>`;
 
 export class DashboardComponent {

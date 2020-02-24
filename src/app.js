@@ -2,10 +2,12 @@ import $ from 'jquery';
 import {LoginComponent} from "./pages/login/login.component";
 
 import {Router} from "./router";
+import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 
 export function main() {
     $(() => {
-        LoginComponent.render();
+        // LoginComponent.render();
+        DashboardComponent.render();
     });
     configRouter();
 }
