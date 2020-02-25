@@ -1,7 +1,7 @@
 import $ from "jquery";
 import './registration.component.scss';
 
- const template = `<div id="page-two">w
+const template = `<div id="page-two">w
         <div class="header">
         <div>
             <img src="./assets/img/diamond.svg">
@@ -11,22 +11,26 @@ import './registration.component.scss';
             <div class="forms">
                 <div class="profile">
                      <div>
-                        <input class="line" type="text" placeholder="name">
+                        <input id="name" class="line" type="text" placeholder="name">
+                        <div id="name-required-error-message" hidden="true">Enter your name</div>
                      </div>
                      <div>
-                        <input class="line" type="text" placeholder="age"></div>
+                        <input id="age" class="line" type="text" placeholder="age"></div>
+                        <div id="age-required-error-message" hidden="true">Enter your age</div>
+                        <div id="invalid-age-error-message" hidden="true">Invalid age</div>
                      <div>
-                        <input class="line" type="text" placeholder="login"></div>
+                        <input id="login"class="line" type="text" placeholder="login"></div>
+                        <div id="login-required-error-message"hidden="true">Enter your login</div>
                      <div>
-                        <input class="line" type="password" placeholder="password"></div>
+                        <input id="password" class="line" type="password" placeholder="password"></div>
+                        <div id="password-required-error-message" hidden="true">Enter your password</div>
                      <div>
-                        <input class="line" type="password" placeholder="сonfirm the password"></div>
+                        <input id="confirm-the-password" class="line" type="password" placeholder="confirm the password"></div>
+                        <div id="confirm-required-error-message" hidden="true">Enter your confirm the password</div>
                      <div>
                         <button onclick="goToLogin()"class="prof-button">Back</button>
-                     
-                        <button onclick="goToAdminDashboard()" class="prof-button ok-left">Ok</button>
+                        <button onclick="tryToRegistration()" class="prof-button ok-left">Ok</button>
                      </div>
-                    
                 </div>
             <div
         </div>
@@ -35,5 +39,68 @@ import './registration.component.scss';
 export class RegistrationComponent {
     static render() {
         $('#router-outlet').html(template);
+        window.tryToRegistration = RegistrationComponent.tryToRegistration;
+    }
+
+    static tryToRegistration() {
+        const name = $('#name').val();
+        const age = $('#age').val();
+        const login = $('#login').val();
+        const password = $('#password').val();
+        const confirmThePassword = $('#confirm-the-password').val();
+
+        RegistrationComponent.validateName(name);
+        RegistrationComponent.validateAge(age);
+        RegistrationComponent.validateLogin(login);
+        RegistrationComponent.validatePassword(password);
+        RegistrationComponent.validateConfirmThePassword(confirmThePassword);
+    }
+
+
+    static validateName(name) {
+        if (name === null || name === '') {
+            $('#name-required-error-message').attr('hidden', false);
+        } else {
+            $('#name-required-error-message').attr('hidden', true);
+
+        }
+    }
+
+    static validateAge(age) {
+        if (age === null || age === '') {
+            $('#age-required-error-message').attr('hidden', false);
+        } else {
+            $('#age-required-error-message').attr('hidden', true);
+
+            if (age < 18 || age > 110) {
+                $('#invalid-age-error-message').attr('hidden', false);
+            } else {
+                $('#invalid-age-error-message').attr('hidden', true);
+            }
+        }
+    }
+
+    static validateLogin(login) {
+        if (login === null || login === '') {
+            $('#login-required-error-message').attr('hidden', false);
+        } else {
+            $('#login-required-error-message').attr('hidden', true);
+        }
+    }
+
+    static validatePassword(password) {
+        if (password === null || password === '') {
+            $('#password-required-error-message').attr('hidden', false);
+        } else {
+            $('#password-required-error-message').attr('hidden', true);
+        }
+    }
+
+    static validateConfirmThePassword(confirmThePassword) {
+        if (confirmThePassword === null || confirmThePassword === '') {
+            $('#confirm-required-error-message').attr('hidden', false);
+        } else {
+            $('#confirm-required-error-message').attr('hidden', true);
+        }
     }
 }
