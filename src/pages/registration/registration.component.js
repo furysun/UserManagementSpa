@@ -15,9 +15,10 @@ const template = `<div id="page-two">w
                         <div id="name-required-error-message" hidden="true">Enter your name</div>
                      </div>
                      <div>
-                        <input id="age" class="line" type="text" placeholder="age"></div>
+                        <input id="age" class="line" placeholder="age" type="number"></div>
                         <div id="age-required-error-message" hidden="true">Enter your age</div>
                         <div id="invalid-age-error-message" hidden="true">Invalid age</div>
+                        <div id="age-dont-number-error-message" hidden="true" >NOOOOOO</div>
                      <div>
                         <input id="login"class="line" type="text" placeholder="login"></div>
                         <div id="login-required-error-message"hidden="true">Enter your login</div>
@@ -27,6 +28,7 @@ const template = `<div id="page-two">w
                      <div>
                         <input id="confirm-the-password" class="line" type="password" placeholder="confirm the password"></div>
                         <div id="confirm-required-error-message" hidden="true">Enter your confirm the password</div>
+                        <div id="passwords-dont-match-error-message" hidden="true">password does't match confirm the password</div>
                      <div>
                         <button onclick="goToLogin()"class="prof-button">Back</button>
                         <button onclick="tryToRegistration()" class="prof-button ok-left">Ok</button>
@@ -56,13 +58,27 @@ export class RegistrationComponent {
         RegistrationComponent.validateConfirmThePassword(confirmThePassword);
     }
 
-
     static validateName(name) {
         if (name === null || name === '') {
             $('#name-required-error-message').attr('hidden', false);
         } else {
             $('#name-required-error-message').attr('hidden', true);
+        }
+    }
 
+    static verifyPassword(confirmThePassword) {
+        const password = $('#password').val();
+
+        if (password !== confirmThePassword) {
+            $('#passwords-dont-match-error-message').attr('hidden', false);
+        }
+    }
+
+    static checkAgeRange(age) {
+        if (age < 18 || age > 110) {
+            $('#invalid-age-error-message').attr('hidden', false);
+        } else {
+            $('#invalid-age-error-message').attr('hidden', true);
         }
     }
 
@@ -71,13 +87,8 @@ export class RegistrationComponent {
             $('#age-required-error-message').attr('hidden', false);
         } else {
             $('#age-required-error-message').attr('hidden', true);
-
-            if (age < 18 || age > 110) {
-                $('#invalid-age-error-message').attr('hidden', false);
-            } else {
-                $('#invalid-age-error-message').attr('hidden', true);
-            }
         }
+        RegistrationComponent.checkAgeRange(age);
     }
 
     static validateLogin(login) {
@@ -102,5 +113,6 @@ export class RegistrationComponent {
         } else {
             $('#confirm-required-error-message').attr('hidden', true);
         }
+        RegistrationComponent.verifyPassword(confirmThePassword);
     }
 }
