@@ -54,14 +54,9 @@ export class RegistrationComponent {
         const age = $('#age').val();
         const login = $('#login').val();
         const password = $('#password').val();
-        const confirmThePassword = $('#confirm-the-password').val();
+        const confirmPassword = $('#confirm-the-password').val();
 
-        if (
-            RegistrationComponent.validateName(name) &&
-            RegistrationComponent.validateAge(age) &&
-            RegistrationComponent.validateLogin(login) &&
-            RegistrationComponent.validatePassword(password) &&
-            RegistrationComponent.validateConfirmThePassword(confirmThePassword)) {
+        if (RegistrationComponent.validate(name, age, login, password, confirmPassword)) {
 
             const newUser = {
                 id: uuidv4(),
@@ -73,6 +68,18 @@ export class RegistrationComponent {
             state.users.push(newUser);
             Router.goToAdminDashboard();
         }
+    }
+
+    static validate(name, age, login, password, confirmPassword) {
+        let validationResults = [
+            RegistrationComponent.validateName(name),
+            RegistrationComponent.validateAge(age),
+            RegistrationComponent.validateLogin(login),
+            RegistrationComponent.validatePassword(password),
+            RegistrationComponent.validateConfirmThePassword(confirmPassword)
+        ];
+
+        return !validationResults.some((result)=>result === false);
     }
 
     static validateName(name) {
