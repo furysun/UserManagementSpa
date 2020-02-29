@@ -4,18 +4,6 @@ import './dashboard.component.scss';
 import {state} from "../../core/state";
 
 let template = `<div id="page-three">
-        <div class="header">
-            <div>
-                <img src="./assets/img/diamond.svg">
-            </div>
-                <div class="hi">
-                    Hello, Rose
-                </div>
-            <div>
-
-            <button onclick="goToLogin()" class="log-out">Log out</button></div>
-        </div>
-
 <div class="table">
 </div>
     </div>`;

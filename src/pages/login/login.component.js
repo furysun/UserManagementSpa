@@ -2,16 +2,12 @@ import $ from "jquery";
 import './login.component.scss';
 import {state} from "../../core/state";
 import {Router} from "../../router";
+import {HeaderComponent} from "../../components/header/header.component";
 
 "use strict";
 
 const template = `
     <div id="login-component">
-        <div class="header">
-            <img src="./assets/img/diamond.svg">
-            <p>${state.name}</p>
-        </div>
-    
         <div class="forms">
             <div class="form-log-passw">
                 <div class="log-form">
@@ -49,6 +45,8 @@ export class LoginComponent {
         } else {
             const user = state.users.some((u) => u.login === login && u.password === password);
             if (user) {
+                state.currentUser = user;
+                HeaderComponent.render();
                 Router.goToAdminDashboard();
             } else {
                 $('#error-message-invalid').attr('hidden', false);

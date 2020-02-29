@@ -1,5 +1,5 @@
 export const state = {
-    name: '<3',
+    currentUser: null,
     users: [
         {
             id: 0,

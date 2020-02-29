@@ -4,14 +4,9 @@ import {state} from "../../core/state";
 import {v4 as uuidv4} from 'uuid';
 import {Router} from "../../router";
 import {RegistrationValidator} from "./registrationValidator";
+import {HeaderComponent} from "../../components/header/header.component";
 
-const template = `<div id="page-two">w
-        <div class="header">
-        <div>
-            <img src="./assets/img/diamond.svg">
-            </div>
-           
-        </div>
+const template = `<div id="page-two">
             <div class="forms">
                 <div class="profile">
                      <div>
@@ -64,7 +59,10 @@ export class RegistrationComponent {
                 name: name,
                 age: age
             };
+
             state.users.push(newUser);
+            state.currentUser = newUser;
+            HeaderComponent.render();
             Router.goToAdminDashboard();
         }
     }
