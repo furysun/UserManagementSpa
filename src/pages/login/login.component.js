@@ -3,6 +3,8 @@ import './login.component.scss';
 import {state} from "../../core/state";
 import {Router} from "../../router";
 import {HeaderComponent} from "../../components/header/header.component";
+import {LoginValidator} from "./login.validator";
+import {UserService} from "../../core/user.service";
 
 "use strict";
 
@@ -14,7 +16,7 @@ const template = `
                     <div class="name"><p>login</p>
                         <input id="login-input" class="login" type="text" onfocus="hideErrorMessages()"></div>
                     <div class="pass"><p>password</p>
-                        <input id="password-input" class="password" type="password">    
+                        <input id="password-input" class="password" type="password" onfocus="hideErrorMessages()">    
                     </div>
                     <div id="error-message-required" hidden="true">Login and password required</div>
                     <div id="error-message-invalid" hidden="true">Login or password invalid</div>
@@ -51,6 +53,17 @@ export class LoginComponent {
             } else {
                 $('#error-message-invalid').attr('hidden', false);
             }
+        }
+    }
+
+    static tryToLogin1() {
+        const login = $('#login-input').val();
+        const password = $('#password-input').val();
+
+        if (LoginValidator.validate(login, password)) {
+            state.currentUser = UserService.find(login, password);
+            HeaderComponent.render();
+            Router.goToAdminDashboard();
         }
     }
 

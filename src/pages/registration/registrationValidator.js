@@ -1,5 +1,6 @@
 import $ from "jquery";
 import {state} from "../../core/state";
+import {UserService} from "../../core/user.service";
 
 export class RegistrationValidator {
     static validate(name, age, login, password, confirmPassword) {
@@ -11,7 +12,7 @@ export class RegistrationValidator {
             RegistrationValidator.validateConfirmThePassword(confirmPassword)
         ];
 
-        return !validationResults.some((result)=>result === false);
+        return !validationResults.some((result) => result === false);
     }
 
     static validateName(name) {
@@ -88,8 +89,7 @@ export class RegistrationValidator {
     }
 
     static validateLoginExists(login) {
-
-        if (state.users.some((user) => user.login === login)) {
+        if (UserService.isExists(login)) {
             $('#login-already-exists-error-message').attr('hidden', false);
             return false;
         } else {

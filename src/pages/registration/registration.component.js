@@ -5,6 +5,7 @@ import {v4 as uuidv4} from 'uuid';
 import {Router} from "../../router";
 import {RegistrationValidator} from "./registrationValidator";
 import {HeaderComponent} from "../../components/header/header.component";
+import {UserService} from "../../core/user.service";
 
 const template = `<div id="page-two">
             <div class="forms">
@@ -59,8 +60,7 @@ export class RegistrationComponent {
                 name: name,
                 age: age
             };
-
-            state.users.push(newUser);
+            UserService.add(newUser);
             state.currentUser = newUser;
             HeaderComponent.render();
             Router.goToAdminDashboard();
