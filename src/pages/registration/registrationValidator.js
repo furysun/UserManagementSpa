@@ -9,7 +9,7 @@ export class RegistrationValidator {
             RegistrationValidator.validateAge(age),
             RegistrationValidator.validateLogin(login),
             RegistrationValidator.validatePassword(password),
-            RegistrationValidator.validateConfirmThePassword(confirmPassword)
+            confirmPassword ? RegistrationValidator.validateConfirmThePassword(confirmPassword) : true
         ];
 
         return !validationResults.some((result) => result === false);

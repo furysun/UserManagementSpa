@@ -1,14 +1,13 @@
-import $ from "jquery";
-import './registration.component.scss';
 import {state} from "../../core/state";
-import {v4 as uuidv4} from 'uuid';
-import {Router} from "../../router";
-import {RegistrationValidator} from "./registrationValidator";
-import {HeaderComponent} from "../../components/header/header.component";
+import $ from "jquery";
+import {RegistrationValidator} from "../registration/registrationValidator";
+import {v4 as uuidv4} from "uuid";
 import {UserService} from "../../core/user.service";
+import {Router} from "../../router";
 
-const template = `<div id="page-two">
-            <div class="forms">
+const template = `
+
+<div class="forms">
                 <div class="profile">
                      <div>
                         <input id="name" class="line" type="text" placeholder="name">
@@ -26,32 +25,40 @@ const template = `<div id="page-two">
                         <input id="password" class="line" type="password" placeholder="password"></div>
                         <div id="password-required-error-message" hidden="true">Enter your password</div>
                      <div>
-                        <input id="confirm-the-password" class="line" type="password" placeholder="confirm the password"></div>
-                        <div id="confirm-required-error-message" hidden="true">Enter your confirm the password</div>
-                        <div id="passwords-dont-match-error-message" hidden="true">password does't match confirm the password</div>
-                     <div>
-                        <button onclick="goToLogin()"class="prof-button">Back</button>
-                        <button onclick="tryToRegistration()" class="prof-button ok-left">Ok</button>
-                     </div>
+                     
+                        <button onclick="tryToAdd()"class="prof-button">Add</button>
+                        <button onclick="goToAdminDashboard()" class="prof-button ok-left">Back</button>
                 </div>
             <div
         </div>
-    </div>`;
+`;
 
-export class RegistrationComponent {
+
+export class AddEditUserComponent {
     static render() {
         $('#router-outlet').html(template);
-        window.tryToRegistration = RegistrationComponent.tryToRegistration;
+
+        let selectedUserId = state.selectedUserId;
+        if(selectedUserId){
+            const selectedUser = UserService.findById(selectedUserId);
+            $('#name').val(selectedUser.name);
+            $('#age').val(selectedUser.age);
+            $('#login').val(selectedUser.login);
+            $('#password').val(selectedUser.password);
+        }
+
+        window.tryToAdd = AddEditUserComponent.tryToAdd;
     }
 
-    static tryToRegistration() {
+    static tryToAdd() {
+        console.log('mrrr');
+
         const name = $('#name').val();
         const age = $('#age').val();
         const login = $('#login').val();
         const password = $('#password').val();
-        const confirmPassword = $('#confirm-the-password').val();
 
-        if (RegistrationValidator.validate(name, age, login, password, confirmPassword)) {
+        if (RegistrationValidator.validate(name, age, login, password)) {
             const newUser = {
                 id: uuidv4(),
                 login: login,
@@ -60,8 +67,6 @@ export class RegistrationComponent {
                 age: age
             };
             UserService.add(newUser);
-            state.currentUser = newUser;
-            HeaderComponent.render();
             Router.goToAdminDashboard();
         }
     }

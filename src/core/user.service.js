@@ -16,4 +16,8 @@ export class UserService {
     static add(user) {
         state.users.push(user);
     }
+
+    static findById(id){
+        return state.users.find((u) => u.id === id);
+    }
 }

@@ -2,6 +2,7 @@ import $ from "jquery";
 // import './dashboard.component.scss';
 import './dashboard.component.scss';
 import {state} from "../../core/state";
+import {Router} from "../../router";
 
 let template = `<div id="page-three">
 <div class="table">
@@ -13,6 +14,7 @@ export class DashboardComponent {
         console.log(state.users);
         $('#router-outlet').html(template);
         DashboardComponent.drawTable(state.users);
+        window.selectUserToEdit = DashboardComponent.selectUserToEdit;
     }
 
     static drawTable(users) {
@@ -32,13 +34,21 @@ export class DashboardComponent {
                 <td>${user.name}</td>
                 <td>${user.age}</td>
                 <td>${user.login}</td>
-                <td class="butt-table"><buttt class= "butt-ok-table">Edit</buttt></td>
+                <td class="butt-table"><buttt class= "butt-ok-table" onclick="selectUserToEdit(${user.id})">Edit</buttt></td>
                 <td class="butt-table"><buttt class="butt-ok-table">Delete</buttt></td>
               </tr>`;
         });
 
-        tableTemplate += `</table>`;
+        tableTemplate += `</table>
+        
+        <button onclick="goToAddUser()" class="butt-add-table">add+</button>`;
 
         $('.table').html(tableTemplate);
+    }
+
+    static selectUserToEdit(id) {
+        state.selectedUserId = id;
+        Router.goToAddUser();
+
     }
 }

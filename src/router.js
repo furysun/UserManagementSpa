@@ -2,6 +2,7 @@ import {LoginComponent} from "./pages/login/login.component";
 import {displayAdminDashboard, displayRegistration} from "./app";
 import {RegistrationComponent} from "./pages/registration/registration.component";
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
+import {AddEditUserComponent} from "./pages/addEditUser/add.edit.user.component";
 
 export class Router {
     static onBrowserBack(event) {
@@ -13,6 +14,8 @@ export class Router {
             displayRegistration();
         } else if (state === 'page3') {
             displayAdminDashboard();
+        } else if(state === 'page4'){
+
         }
     }
 
@@ -29,5 +32,10 @@ export class Router {
     static goToAdminDashboard() {
         history.pushState('page3', 'page3');
         DashboardComponent.render();
+    }
+
+    static goToAddUser(){
+        history.pushState('page4', 'page4');
+        AddEditUserComponent.render();
     }
 }

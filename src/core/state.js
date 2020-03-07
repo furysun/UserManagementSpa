@@ -1,5 +1,6 @@
 export const state = {
     currentUser: null,
+    selectedUserId: null,
     users: [
         {
             id: 0,
