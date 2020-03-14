@@ -3,6 +3,7 @@ import $ from "jquery";
 import './dashboard.component.scss';
 import {state} from "../../core/state";
 import {Router} from "../../router";
+import {UserService} from "../../core/user.service";
 
 let template = `<div id="page-three">
 <div class="table">
@@ -15,6 +16,7 @@ export class DashboardComponent {
         $('#router-outlet').html(template);
         DashboardComponent.drawTable(state.users);
         window.selectUserToEdit = DashboardComponent.selectUserToEdit;
+        window.deleteUser = DashboardComponent.deleteUser;
     }
 
     static drawTable(users) {
@@ -34,8 +36,8 @@ export class DashboardComponent {
                 <td>${user.name}</td>
                 <td>${user.age}</td>
                 <td>${user.login}</td>
-                <td class="butt-table"><buttt class= "butt-ok-table" onclick="selectUserToEdit(${user.id})">Edit</buttt></td>
-                <td class="butt-table"><buttt class="butt-ok-table">Delete</buttt></td>
+                <td class="butt-table"><buttt class= "butt-ok-table" onclick="selectUserToEdit(\'${user.id}\')">Edit</buttt></td>
+                <td class="butt-table"><buttt class="butt-ok-table" onclick="deleteUser(\'${user.id}\')">Delete</buttt></td>
               </tr>`;
         });
 
@@ -47,8 +49,14 @@ export class DashboardComponent {
     }
 
     static selectUserToEdit(id) {
+        console.log(id);
         state.selectedUserId = id;
         Router.goToAddUser();
 
+    }
+
+    static deleteUser(id) {
+        UserService.delete(id);
+        DashboardComponent.render();
     }
 }

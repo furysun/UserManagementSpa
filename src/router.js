@@ -11,11 +11,11 @@ export class Router {
         if (state === 'page1') {
             LoginComponent.render();
         } else if (state === 'page2') {
-            displayRegistration();
+            RegistrationComponent.render();
         } else if (state === 'page3') {
-            displayAdminDashboard();
+            DashboardComponent.render();
         } else if(state === 'page4'){
-
+            AddEditUserComponent.render();
         }
     }
 

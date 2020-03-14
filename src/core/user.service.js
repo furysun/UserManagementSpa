@@ -17,7 +17,15 @@ export class UserService {
         state.users.push(user);
     }
 
-    static findById(id){
+    static findById(id) {
         return state.users.find((u) => u.id === id);
+    }
+
+    static delete(id) {
+        for (let i = 0; i < state.users.length; i++) {
+            if (state.users[i].id === id) {
+                state.users.splice(i, 1);
+            }
+        }
     }
 }

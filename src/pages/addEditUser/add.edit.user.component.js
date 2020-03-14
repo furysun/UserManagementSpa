@@ -39,7 +39,11 @@ export class AddEditUserComponent {
         $('#router-outlet').html(template);
 
         let selectedUserId = state.selectedUserId;
+        console.log(selectedUserId + " id!");
+
         if(selectedUserId){
+            console.log(" ?!");
+
             const selectedUser = UserService.findById(selectedUserId);
             $('#name').val(selectedUser.name);
             $('#age').val(selectedUser.age);
