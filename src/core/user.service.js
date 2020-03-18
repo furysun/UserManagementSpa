@@ -28,4 +28,11 @@ export class UserService {
             }
         }
     }
+    static edit(user){
+       const oldUser =  UserService.findById(user.id);
+        oldUser.name = user.name;
+        oldUser.login = user.login;
+        oldUser.password = user.password;
+        oldUser.age = user.age;
+    }
 }

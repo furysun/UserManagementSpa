@@ -15,6 +15,19 @@ export class RegistrationValidator {
         return !validationResults.some((result) => result === false);
     }
 
+    static validateOnEdit(id, name, age, login, password, confirmPassword) {
+        let validationResults = [
+            RegistrationValidator.validateName(name),
+            RegistrationValidator.validateAge(age),
+            RegistrationValidator.validateLoginOnEdit(id, login),
+            RegistrationValidator.validatePassword(password),
+            confirmPassword ? RegistrationValidator.validateConfirmThePassword(confirmPassword) : true
+        ];
+
+        return !validationResults.some((result) => result === false);
+    }
+
+
     static validateName(name) {
         if (name === null || name === '') {
             $('#name-required-error-message').attr('hidden', false);
@@ -65,6 +78,20 @@ export class RegistrationValidator {
             $('#login-required-error-message').attr('hidden', true);
 
             return RegistrationValidator.validateLoginExists(login);
+        }
+    }
+
+    static validateLoginOnEdit(id, login) {
+        if (login === null || login === '') {
+            $('#login-required-error-message').attr('hidden', false);
+            return false;
+        } else {
+            $('#login-required-error-message').attr('hidden', true);
+
+            const oldUser = UserService.findById(id);
+            if (oldUser.login !== login) {
+                return RegistrationValidator.validateLoginExists(login);
+            }
         }
     }
 
