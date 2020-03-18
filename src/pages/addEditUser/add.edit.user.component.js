@@ -91,7 +91,6 @@ export class AddEditUserComponent {
         Router.goToAdminDashboard();
     }
 
-
     static validationAndEdit(name, age, login, password) {
         if (RegistrationValidator.validateOnEdit(state.selectedUserId, name, age, login, password)) {
             const newUser = {
@@ -118,6 +117,5 @@ export class AddEditUserComponent {
             UserService.add(newUser);
             Router.goToAdminDashboard();
         }
-
     }
 }

@@ -13,10 +13,10 @@ const template = `
         <div class="forms">
             <div class="form-log-passw">
                 <div class="log-form">
-                    <div class="name"><p>login</p>
-                        <input id="login-input" class="login" type="text" onfocus="hideErrorMessages()"></div>
-                    <div class="pass"><p>password</p>
-                        <input id="password-input" class="password" type="password" onfocus="hideErrorMessages()">    
+                    <div class="name">
+                        <input id="login-input" class="login" type="text" onfocus="hideErrorMessages()" placeholder="login"></div>
+                    <div class="pass">
+                        <input id="password-input" class="password" type="password" onfocus="hideErrorMessages()" placeholder="password">    
                     </div>
                     <div id="error-message-required" hidden="true">Login and password required</div>
                     <div id="error-message-invalid" hidden="true">Login or password invalid</div>
