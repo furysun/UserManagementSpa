@@ -21,8 +21,10 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "html-to-image": "^0.1.1",
     "jquery": "^3.4.1",
+    "popper.js": "^1.16.1",
     "uuid": "^7.0.1"
   }
 }

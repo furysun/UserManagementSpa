@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import {LoginComponent} from "./pages/login/login.component";
-
+import 'bootstrap';
 import {Router} from "./router";
 import {HeaderComponent} from "./components/header/header.component";
 
