@@ -8,7 +8,7 @@ import {HeaderComponent} from "../../components/header/header.component";
 import {UserService} from "../../core/user.service";
 
 const template = `<div id="page-two">
-            <div class="forms">
+            <div class="form">
                 <div class="profile">
                      <div>
                         <input id="name" class="line" type="text" placeholder="name">

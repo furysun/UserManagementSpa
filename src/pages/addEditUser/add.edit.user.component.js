@@ -7,7 +7,7 @@ import {Router} from "../../router";
 
 const template = `
 
-<div class="forms">
+<div class="form">
                 <div class="profile">
                 
                      <div id="add-user-title" hidden="true" >Add user</div>

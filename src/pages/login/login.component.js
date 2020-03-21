@@ -10,23 +10,15 @@ import {UserService} from "../../core/user.service";
 
 const template = `
     <div id="login-component">
-        <div class="forms">
-            <div class="form-log-passw">
-                <div class="log-form">
-                    <div class="name">
-                        <input id="login-input" class="login" type="text" onfocus="hideErrorMessages()" placeholder="login"></div>
-                    <div class="pass">
-                        <input id="password-input" class="password" type="password" onfocus="hideErrorMessages()" placeholder="password">    
-                    </div>
-                    <div id="error-message-required" hidden="true">Login and password required</div>
-                    <div id="error-message-invalid" hidden="true">Login or password invalid</div>
-                    <div class="ok-butt">
-                        <button onclick="tryToLogin()" class="button-ok">Ok</button>
-                    </div>
-                    
-                    <div onclick="goToRegistration()" class="reg-butt"><button class="button-registr">Registration</button></div>
-                    </div>
-                </div>    
+        <div class="form">
+            <input id="login-input"  class="form-control form-element form-input" type="text" onfocus="hideErrorMessages()" placeholder="login">
+            <input id="password-input"  class="form-control form-element form-input" type="password" onfocus="hideErrorMessages()" placeholder="password">    
+          
+            <div id="error-message-required" class="alert alert-danger" hidden="true">Login and password required</div>
+            <div id="error-message-invalid"  class="alert alert-danger" hidden="true">Login or password invalid</div>
+            
+            <button onclick="tryToLogin()" class="btn form-element form-button">Ok</button>
+            <button onclick="goToRegistration()" class="btn form-element form-button">Registration</button>
         </div>
     </div>`;
 
