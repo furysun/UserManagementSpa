@@ -95,13 +95,8 @@ img {
 .log-out {
   margin-top: 10px;
   margin-right: 20px;
-  width: 167px;
+  width: 10%;
   height: 52px;
-  border: none;
-  font-family: Roboto;
-  color: #CB82C4;
-  background: #FBD6E3;
-  border-radius: 12px;
 }
 
 .prof-button {
@@ -130,5 +125,28 @@ img {
   width: 694px;
   height: 240px;
   margin-top: 88px;
+  //background-color: $button-color;
+}
+.table td{
+  vertical-align: 	middle;
 }
 
+.marg{
+  margin-bottom: 1px;
+}
+td{
+  color: $font-color;
+  padding-bottom: 1px;
+
+}
+th{
+  color: $font-color2;
+}
+.center{
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+#exampleModalLabel{
+  color: $font-color2;
+}

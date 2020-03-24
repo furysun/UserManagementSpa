@@ -9,7 +9,7 @@ export class HeaderComponent {
         <img src="./assets/img/diamond.svg">`;
 
         if (state.currentUser) {
-            template += `<button onclick="logout()" class="log-out">Log out</button>`;
+            template += `<button onclick="logout()"  class="btn form-element form-button log-out">Log out</button>`;
         }
 
         $('#header').html(template);

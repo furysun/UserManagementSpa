@@ -6,34 +6,36 @@ import {UserService} from "../../core/user.service";
 import {Router} from "../../router";
 
 const template = `
-
+<div id="login-component">
 <div class="form">
                 <div class="profile">
                 
-                     <div id="add-user-title" hidden="true" >Add user</div>
-                     <div id="edit-user-title" hidden="true">Edit user</div>
+                     <div id="add-user-title" class="center" hidden="true" >Add user</div>
+                     <div id="edit-user-title" class="center" hidden="true">Edit user</div>
                      
                      <div>
-                        <input id="name" class="line" type="text" placeholder="name">
-                        <div id="name-required-error-message" hidden="true">Enter your name</div>
+                        <input id="name" class="form-control form-element form-input" type="text" placeholder="name">
+                        <div id="name-required-error-message" class="alert alert-danger" hidden="true">Enter your name</div>
                      </div>
+                     
                      <div>
-                        <input id="age" class="line" placeholder="age" type="number"></div>
-                        <div id="age-required-error-message" hidden="true">Enter your age</div>
-                        <div id="invalid-age-error-message" hidden="true">Invalid age</div>
+                        <input id="age" class="form-control form-element form-input" placeholder="age" type="number"></div>
+                        <div id="age-required-error-message" class="alert alert-danger" hidden="true">Enter your age</div>
+                        <div id="invalid-age-error-message"  class="alert alert-danger" hidden="true">Invalid age</div>
                      <div>
-                        <input id="login"class="line" type="text" placeholder="login"></div>
-                        <div id="login-required-error-message"hidden="true">Enter your login</div>
-                        <div id="login-already-exists-error-message" hidden ='true'>login already exists</div>
+                        <input id="login" class="form-control form-element form-input" type="text" placeholder="login"></div>
+                        <div id="login-required-error-message" class="alert alert-danger" hidden="true">Enter your login</div>
+                        <div id="login-already-exists-error-message" class="alert alert-danger" hidden ='true'>login already exists</div>
                      <div>
-                        <input id="password" class="line" type="password" placeholder="password"></div>
-                        <div id="password-required-error-message" hidden="true">Enter your password</div>
+                        <input id="password" class="form-control form-element form-input"type="password" placeholder="password"></div>
+                        <div id="password-required-error-message" class="alert alert-danger" hidden="true">Enter your password</div>
                      <div>
                      
-                        <button onclick="addOrEdit()" class="prof-button">Add</button>
-                        <button onclick="back()" class="prof-button ok-left">Back</button>
+                        <button onclick="addOrEdit()" class="btn form-element form-button">Add</button>
+                        <button onclick="back()" class="btn form-element form-button">Back</button>
                 </div>
-            <div
+            <div>
+            </div>
         </div>
 `;
 
