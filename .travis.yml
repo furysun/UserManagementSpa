@@ -14,7 +14,7 @@ script:
   - npm run build_prod
 
 deploy:
-  provider: pages:git
+  provider: pages
   github_token: $GITHUB_TOKEN
   local_dir: build
 
