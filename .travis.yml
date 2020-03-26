@@ -13,12 +13,11 @@ cache:
 script:
   - npm run build_prod
 
-local_dir: build
-
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   keep_history: true
+  local_dir: build
   on:
     branch: master
