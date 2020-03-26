@@ -1,3 +1,4 @@
 deploy:
   provider: pages:git
+  github_token: $GITHUB_TOKEN
 #  deploy_key: <deploy_key>
