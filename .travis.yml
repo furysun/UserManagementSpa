@@ -13,8 +13,6 @@ cache:
 script:
   - npm run build_prod
 
-local_dir: build
-
 deploy:
   provider: pages
   skip_cleanup: true
