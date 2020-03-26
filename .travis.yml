@@ -20,5 +20,3 @@ deploy:
   keep_history: true
   on:
     branch: master
-
-#  deploy_key: <deploy_key>
