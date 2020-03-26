@@ -1,4 +1,21 @@
+language: node_js
+node_js:
+  - stable
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - npm run build_prod
+
 deploy:
   provider: pages:git
   github_token: $GITHUB_TOKEN
+  local_dir: build
+
 #  deploy_key: <deploy_key>
