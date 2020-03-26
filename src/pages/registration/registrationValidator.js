@@ -1,6 +1,6 @@
 import $ from "jquery";
-import {state} from "../../core/state";
 import {UserService} from "../../core/user.service";
+import {ValidateUtils} from "../../core/validate.utils";
 
 export class RegistrationValidator {
     static validate(name, age, login, password, confirmPassword) {
@@ -29,7 +29,7 @@ export class RegistrationValidator {
 
 
     static validateName(name) {
-        if (name === null || name === '') {
+        if (ValidateUtils.isEmpty(name)) {
             $('#name-required-error-message').attr('hidden', false);
             return false;
         } else {
@@ -61,7 +61,7 @@ export class RegistrationValidator {
     }
 
     static validateAge(age) {
-        if (age === null || age === '') {
+        if (ValidateUtils.isEmpty(age)) {
             $('#age-required-error-message').attr('hidden', false);
             return false;
         } else {
@@ -71,7 +71,7 @@ export class RegistrationValidator {
     }
 
     static validateLogin(login) {
-        if (login === null || login === '') {
+        if (ValidateUtils.isEmpty(login)) {
             $('#login-required-error-message').attr('hidden', false);
             return false;
         } else {
@@ -82,7 +82,7 @@ export class RegistrationValidator {
     }
 
     static validateLoginOnEdit(id, login) {
-        if (login === null || login === '') {
+        if (ValidateUtils.isEmpty(login)) {
             $('#login-required-error-message').attr('hidden', false);
             return false;
         } else {
@@ -96,7 +96,7 @@ export class RegistrationValidator {
     }
 
     static validatePassword(password) {
-        if (password === null || password === '') {
+        if (ValidateUtils.isEmpty(password)) {
             $('#password-required-error-message').attr('hidden', false);
             return false;
         } else {
@@ -106,7 +106,7 @@ export class RegistrationValidator {
     }
 
     static validateConfirmThePassword(confirmThePassword) {
-        if (confirmThePassword === null || confirmThePassword === '') {
+        if (ValidateUtils.isEmpty(confirmThePassword)) {
             $('#confirm-required-error-message').attr('hidden', false);
             return false;
         } else {

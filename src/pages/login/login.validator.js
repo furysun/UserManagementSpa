@@ -1,6 +1,6 @@
-import {state} from "../../core/state";
 import $ from "jquery";
 import {UserService} from "../../core/user.service";
+import {ValidateUtils} from "../../core/validate.utils";
 
 export class LoginValidator {
     static validate(login, password) {
@@ -10,7 +10,7 @@ export class LoginValidator {
     }
 
     static validateRequired(login, password) {
-        if (login === null || login === "" || password === null || password === "") {
+        if (ValidateUtils.isEmpty(login)|| ValidateUtils.isEmpty(password)) {
             $('#error-message-required').attr('hidden', false);
             return false;
         } else {

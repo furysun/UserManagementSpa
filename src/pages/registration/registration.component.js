@@ -6,6 +6,7 @@ import {Router} from "../../router";
 import {RegistrationValidator} from "./registrationValidator";
 import {HeaderComponent} from "../../components/header/header.component";
 import {UserService} from "../../core/user.service";
+import {ValidateUtils} from "../../core/validate.utils";
 
 const template = `<div id="page-two">
     <div id="login-component">
@@ -13,11 +14,11 @@ const template = `<div id="page-two">
                     <div class="profile">
                     <div class="center">Registration</div>
                          <div>
-                            <input id="name"  class="form-control form-element form-input" type="text" placeholder="name">
+                            <input id="name" onkeypress="return alphaOnly(event)" class="form-control form-element form-input" type="text" placeholder="name">
                             <div id="name-required-error-message" class="alert alert-danger" hidden="true">Enter your name</div>
                          </div>
                          <div>
-                            <input id="age"  class="form-control form-element form-input"placeholder="age" type="number"></div>
+                            <input id="age" onkeypress="return numericOnly(event)" class="form-control form-element form-input"placeholder="age" type="number"></div>
                             <div id="age-required-error-message" class="alert alert-danger"  hidden="true">Enter your age</div>
                             <div id="invalid-age-error-message" class="alert alert-danger" hidden="true">Invalid age</div>
                          <div>
@@ -45,6 +46,8 @@ export class RegistrationComponent {
     static render() {
         $('#router-outlet').html(template);
         window.tryToRegistration = RegistrationComponent.tryToRegistration;
+        window.alphaOnly = ValidateUtils.alphaOnly;
+        window.numericOnly = ValidateUtils.numericOnly;
     }
 
     static tryToRegistration() {

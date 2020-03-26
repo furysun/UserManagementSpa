@@ -137,10 +137,12 @@ img {
 td{
   color: $font-color;
   padding-bottom: 1px;
+  background-color: $main-color;
 
 }
 th{
   color: $font-color2;
+  background-color: $main-color;
 }
 .center{
   text-align: center;

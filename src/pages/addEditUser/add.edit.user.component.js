@@ -4,6 +4,7 @@ import {RegistrationValidator} from "../registration/registrationValidator";
 import {v4 as uuidv4} from "uuid";
 import {UserService} from "../../core/user.service";
 import {Router} from "../../router";
+import {ValidateUtils} from "../../core/validate.utils";
 
 const template = `
 <div id="login-component">
@@ -14,12 +15,12 @@ const template = `
                      <div id="edit-user-title" class="center" hidden="true">Edit user</div>
                      
                      <div>
-                        <input id="name" class="form-control form-element form-input" type="text" placeholder="name">
+                        <input id="name" onkeypress="return alphaOnly(event);" class="form-control form-element form-input" type="text" placeholder="name">
                         <div id="name-required-error-message" class="alert alert-danger" hidden="true">Enter your name</div>
                      </div>
                      
                      <div>
-                        <input id="age" class="form-control form-element form-input" placeholder="age" type="number"></div>
+                        <input id="age" onkeypress="return numericOnly(event);"class="form-control form-element form-input" placeholder="age" type="number"></div>
                         <div id="age-required-error-message" class="alert alert-danger" hidden="true">Enter your age</div>
                         <div id="invalid-age-error-message"  class="alert alert-danger" hidden="true">Invalid age</div>
                      <div>
@@ -59,7 +60,9 @@ export class AddEditUserComponent {
 
         window.addOrEdit = AddEditUserComponent.addOrEdit;
         window.back = AddEditUserComponent.back;
-        AddEditUserComponent.editOrAdd();
+        window.alphaOnly = ValidateUtils.alphaOnly;
+        window.numericOnly = ValidateUtils.numericOnly;
+        AddEditUserComponent.chooseTitle();
     }
 
     static addOrEdit() {
@@ -77,15 +80,10 @@ export class AddEditUserComponent {
 
     }
 
-    static editOrAdd() {
-        const addUserTitle = $('#add-user-title');
-        const editUserTitle = $('#edit-user-title');
-
-        if (state.selectedUserId) {
-            $('#edit-user-title').attr('hidden', false);
-        } else {
+    static chooseTitle() {
+        state.selectedUserId ?
+            $('#edit-user-title').attr('hidden', false) :
             $('#add-user-title').attr('hidden', false);
-        }
     }
 
     static back() {
