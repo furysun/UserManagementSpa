@@ -11,14 +11,11 @@ let template = `<div id="page-three">
 
 export class DashboardComponent {
     static render() {
-        console.log(state.users);
         $('#router-outlet').html(template);
         DashboardComponent.drawTable(state.users);
         window.selectUserToEdit = DashboardComponent.selectUserToEdit;
         window.deleteUser = DashboardComponent.deleteUser;
         window.showModal = DashboardComponent.showModal;
-
-        $('.')
     }
 
     static drawTable(users) {

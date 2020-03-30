@@ -5,6 +5,7 @@ import {Router} from "../../router";
 import {HeaderComponent} from "../../components/header/header.component";
 import {LoginValidator} from "./login.validator";
 import {UserService} from "../../core/user.service";
+import {ValidateUtils} from "../../core/validate.utils";
 
 "use strict";
 
@@ -34,28 +35,22 @@ export class LoginComponent {
         const login = $('#login-input').val();
         const password = $('#password-input').val();
 
-        if (login === null || login === "" || password === null || password === "") {
+        if (ValidateUtils.isEmpty(login) || ValidateUtils.isEmpty(password)) {
             $('#error-message-required').attr('hidden', false);
         } else {
-            const user = state.users.some((u) => u.login === login && u.password === password);
+            const user = UserService.find(login, password);
             if (user) {
                 state.currentUser = user;
                 HeaderComponent.render();
-                Router.goToAdminDashboard();
+
+                if (user.admin === true) {
+                    Router.goToAdminDashboard();
+                } else {
+                    Router.goToHiUser();
+                }
             } else {
                 $('#error-message-invalid').attr('hidden', false);
             }
-        }
-    }
-
-    static tryToLogin1() {
-        const login = $('#login-input').val();
-        const password = $('#password-input').val();
-
-        if (LoginValidator.validate(login, password)) {
-            state.currentUser = UserService.find(login, password);
-            HeaderComponent.render();
-            Router.goToAdminDashboard();
         }
     }
 

@@ -7,7 +7,8 @@ import {HeaderComponent} from "./components/header/header.component";
 export function main() {
     $(() => {
         HeaderComponent.render();
-        LoginComponent.render();
+        // LoginComponent.render();
+        Router.goToLogin();
     });
     configRouter();
 }

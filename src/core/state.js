@@ -10,21 +10,24 @@ export const state = {
             login: 'admin',
             password: 'admin',
             name: 'Tod',
-            age: 25
+            age: 25,
+            admin:true
         },
         {
             id: uuidv4(),
             login: 'user1',
             password: 'user1',
             name: 'Citti',
-            age: 20
+            age: 20,
+            admin:false
         },
         {
             id: uuidv4(),
             login: 'user2',
             password: 'user2',
             name: 'Lea',
-            age: 27
+            age: 27,
+            admin:false
         }
     ]
 };
