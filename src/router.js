@@ -1,41 +1,51 @@
 import {LoginComponent} from "./pages/login/login.component";
-import {displayAdminDashboard, displayRegistration} from "./app";
 import {RegistrationComponent} from "./pages/registration/registration.component";
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {AddEditUserComponent} from "./pages/addEditUser/add.edit.user.component";
+import {HiUserComponent} from "./pages/hiUser/hi.user.component";
+
+const loginPageState = 'loginPageState';
+const registrationPageState = 'registrationPageState';
+const adminDashboardPageState = 'adminDashboardPageState';
+const addUserPageState = 'addUserPageState';
+const hiUserPageState = 'hiUserPageState';
 
 export class Router {
     static onBrowserBack(event) {
         const state = event.state;
-        console.log(event.state);
-        if (state === 'page1') {
-            LoginComponent.render();
-        } else if (state === 'page2') {
-            RegistrationComponent.render();
-        } else if (state === 'page3') {
-            DashboardComponent.render();
-        } else if(state === 'page4'){
-            AddEditUserComponent.render();
-        }
+        const routes = {
+            loginPageState: LoginComponent.render,
+            registrationPageState: RegistrationComponent.render,
+            adminDashboardPageState: DashboardComponent.render,
+            addUserPageState: AddEditUserComponent.render,
+            hiUserPageState:  HiUserComponent.render
+        };
+        console.log('redirect to '+ state );
+        routes[state]();
     }
 
     static goToLogin() {
-        history.pushState('page1', 'page1');
+        history.pushState(loginPageState, loginPageState);
         LoginComponent.render();
     }
 
     static goToRegistration() {
-        history.pushState('page2', 'page2');
+        history.pushState(registrationPageState, registrationPageState);
         RegistrationComponent.render();
     }
 
     static goToAdminDashboard() {
-        history.pushState('page3', 'page3');
+        history.pushState(adminDashboardPageState, adminDashboardPageState);
         DashboardComponent.render();
     }
 
-    static goToAddUser(){
-        history.pushState('page4', 'page4');
+    static goToAddUser() {
+        history.pushState(addUserPageState, addUserPageState);
         AddEditUserComponent.render();
+    }
+
+        static goToHiUser() {
+        history.pushState(hiUserPageState, hiUserPageState);
+        HiUserComponent.render();
     }
 }
