@@ -23,6 +23,8 @@ const template = `
                         <input id="age" onkeypress="return numericOnly(event);"class="form-control form-element form-input" placeholder="age" type="number"></div>
                         <div id="age-required-error-message" class="alert alert-danger" hidden="true">Enter your age</div>
                         <div id="invalid-age-error-message"  class="alert alert-danger" hidden="true">Invalid age</div>
+                        
+                       
                      <div>
                         <input id="login" class="form-control form-element form-input" type="text" placeholder="login"></div>
                         <div id="login-required-error-message" class="alert alert-danger" hidden="true">Enter your login</div>
@@ -32,6 +34,11 @@ const template = `
                         <div id="password-required-error-message" class="alert alert-danger" hidden="true">Enter your password</div>
                      <div>
                      
+                      <div class="checkbox-wrapper"> 
+                            <input id ="is-admin" type="checkbox">
+                            <label for="is-admin">admin</label>
+                      </div>
+                     
                         <button onclick="addOrEdit()" class="btn form-element form-button">Add</button>
                         <button onclick="back()" class="btn form-element form-button">Back</button>
                 </div>
@@ -40,22 +47,20 @@ const template = `
         </div>
 `;
 
-
 export class AddEditUserComponent {
     static render() {
         $('#router-outlet').html(template);
 
         let selectedUserId = state.selectedUserId;
-        console.log(selectedUserId + " id!");
-
         if (selectedUserId) {
-            console.log(" ?!");
-
             const selectedUser = UserService.findById(selectedUserId);
             $('#name').val(selectedUser.name);
             $('#age').val(selectedUser.age);
             $('#login').val(selectedUser.login);
             $('#password').val(selectedUser.password);
+            if (selectedUser.admin) {
+                $('#is-admin').attr('checked', 'checked');
+            }
         }
 
         window.addOrEdit = AddEditUserComponent.addOrEdit;
@@ -70,11 +75,12 @@ export class AddEditUserComponent {
         const age = $('#age').val();
         const login = $('#login').val();
         const password = $('#password').val();
+        const isAdmin = $('#is-admin').is(":checked");
 
         if (state.selectedUserId) {
-            AddEditUserComponent.validationAndEdit(name, age, login, password);
+            AddEditUserComponent.validationAndEdit(name, age, login, password, isAdmin);
         } else {
-            AddEditUserComponent.validationAndAdd(name, age, login, password);
+            AddEditUserComponent.validationAndAdd(name, age, login, password, isAdmin);
         }
         state.selectedUserId = null;
 
@@ -91,30 +97,34 @@ export class AddEditUserComponent {
         Router.goToAdminDashboard();
     }
 
-    static validationAndEdit(name, age, login, password) {
+    static validationAndEdit(name, age, login, password, isAdmin) {
         if (RegistrationValidator.validateOnEdit(state.selectedUserId, name, age, login, password)) {
             const newUser = {
                 id: state.selectedUserId,
                 login: login,
                 password: password,
                 name: name,
-                age: age
+                age: age,
+                admin: isAdmin
             };
+
             UserService.edit(newUser);
             Router.goToAdminDashboard();
         }
     }
 
-    static validationAndAdd(name, age, login, password) {
+    static validationAndAdd(name, age, login, password, isAdmin) {
         if (RegistrationValidator.validate(name, age, login, password)) {
             const newUser = {
                 id: uuidv4(),
                 login: login,
                 password: password,
                 name: name,
-                age: age
+                age: age,
+                admin: isAdmin
             };
             UserService.add(newUser);
+
             Router.goToAdminDashboard();
         }
     }

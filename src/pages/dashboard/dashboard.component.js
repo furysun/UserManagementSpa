@@ -25,6 +25,7 @@ export class DashboardComponent {
                 <th>Name</th>
                 <th>Age</th>
                 <th>Login</th>
+                <th>Is admin</th>
                 <th>Actions</th>
                 <th></th>
               </tr>`;
@@ -34,8 +35,11 @@ export class DashboardComponent {
               <tr>
                 <td>${user.name}</td>
                 <td>${user.age}</td>
-                <td>${user.login}</td>
-                <td><button class="btn form-element form-button marg" onclick="selectUserToEdit(\'${user.id}\')">Edit</button></td>
+                <td>${user.login}</td>`;
+
+                tableTemplate += user.admin? `<td>&check;</td>` : `<td>&cross;</td>`;
+
+            tableTemplate += ` <td><button class="btn form-element form-button marg" onclick="selectUserToEdit(\'${user.id}\')">Edit</button></td>
                 <td><button class="btn form-element form-button marg" onclick="showModal(\'${user.id}\')">Delete</button></td>
               </tr>`;
         });
@@ -68,10 +72,8 @@ export class DashboardComponent {
     }
 
     static selectUserToEdit(id) {
-        console.log(id);
         state.selectedUserId = id;
         Router.goToAddUser();
-
     }
 
     static deleteUser() {

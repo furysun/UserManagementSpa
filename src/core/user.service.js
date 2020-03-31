@@ -34,5 +34,6 @@ export class UserService {
         oldUser.login = user.login;
         oldUser.password = user.password;
         oldUser.age = user.age;
+        oldUser.admin = user.admin;
     }
 }

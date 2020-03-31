@@ -15,8 +15,8 @@ export const state = {
         },
         {
             id: uuidv4(),
-            login: 'user1',
-            password: 'user1',
+            login: '1',
+            password: '1',
             name: 'Citti',
             age: 20,
             admin:false

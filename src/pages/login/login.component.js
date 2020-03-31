@@ -3,7 +3,6 @@ import './login.component.scss';
 import {state} from "../../core/state";
 import {Router} from "../../router";
 import {HeaderComponent} from "../../components/header/header.component";
-import {LoginValidator} from "./login.validator";
 import {UserService} from "../../core/user.service";
 import {ValidateUtils} from "../../core/validate.utils";
 
