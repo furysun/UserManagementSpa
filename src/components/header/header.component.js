@@ -6,7 +6,7 @@ import {Router} from "../../router";
 export class HeaderComponent {
     static render() {
         let template = `
-        <img src="./assets/img/diamond.svg">`;
+        <img class="logo" src="./assets/img/diamond.svg">`;
 
 
         if (state.currentUser) {

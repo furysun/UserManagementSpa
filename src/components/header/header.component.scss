@@ -6,3 +6,9 @@
     height: 72px;
     background-color: #F9BBDE;
 }
+@media (max-width: 600px) {
+    #header {
+        justify-content: center;
+
+    }
+}

@@ -5,7 +5,7 @@ import {Router} from "../../router";
 import {UserService} from "../../core/user.service";
 
 let template = `<div id="page-three">
-    <div class="table">
+    <div id="table">
     </div>
 </div>`;
 
@@ -68,7 +68,7 @@ export class DashboardComponent {
               </div>
             </div>`;
 
-        $('.table').html(tableTemplate);
+        $('#table').html(tableTemplate);
     }
 
     static selectUserToEdit(id) {

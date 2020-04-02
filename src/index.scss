@@ -26,7 +26,6 @@ p {
 }
 
 #main {
-  margin: auto;
   height: 100%;
   width: 100%;
 }
@@ -45,7 +44,7 @@ p {
   height: 100%;
 }
 
-img {
+.logo {
   width: 53px;
   height: 52px;
 
@@ -96,7 +95,6 @@ img {
   margin-top: 10px;
   margin-right: 20px;
   width: 10%;
-  height: 52px;
 }
 
 .prof-button {
@@ -127,6 +125,7 @@ img {
   margin-top: 88px;
   //background-color: $button-color;
 }
+
 .table td{
   vertical-align: 	middle;
 }
@@ -151,4 +150,30 @@ th{
 
 #exampleModalLabel{
   color: $font-color2;
+}
+
+
+@media (max-width: 600px) {
+  #login-component {
+    background-color: white;
+  }
+
+  .form {
+    width: 350px;
+  }
+
+  .log-out {
+    width: 30%;
+    position: absolute;
+    right: 0px;
+    margin-top: 15px;
+  }
+  .logo{
+    padding-left: 0px;
+  }
+
+  .table {
+    width: 400px;
+  }
+
 }
